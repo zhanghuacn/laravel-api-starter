@@ -40,7 +40,7 @@
 │   │   └── PostService.php                     // 具体的业务需求处理逻辑
 │   └── Support                                 // 对框架的扩展，或者实际项目中需要封装一些与业务无关的通用功能（你或许会发现，这里 Support 中的实现其实放到 Laravel 项目中也能用）
 │       ├── Enum                                // 扩展常量/枚举的定义和使用
-│       ├── Logger                              // 扩展 Lumen 的日志支持记录到 Mongodb
+│       ├── Logger                              // 扩展 Laravel 的日志支持记录到 Mongodb
 │       ├── Response.php                        // 统一 API 响应格式（data、code、status、message），同时支持 Api Resource 与 Transformer
 │       ├── Traits                              // class 中常用到的方法
 │       └── helpers.php                         // 全局会用到的函数
@@ -171,7 +171,7 @@ $this->response->errorMethodNotAllowed();
                 "total_pages": 5,
                 "links": {
                     "previous": null,
-                    "next": "http://lumen-api.laravel-api-starter/users?page=2"
+                    "next": "http://laravel-api.laravel-api-starter/users?page=2"
                 }
             }
         }
@@ -237,28 +237,28 @@ $this->response->errorMethodNotAllowed();
     "data": {
         "message": "No query results for model [App\\Models\\User] 19",
         "exception": "Symfony\\Component\\HttpKernel\\Exception\\NotFoundHttpException",
-        "file": "/var/www/lumen-api-starter/vendor/laravel/lumen-framework/src/Exceptions/Handler.php",
+        "file": "/var/www/laravel-api-starter/vendor/laravel/laravel-framework/src/Exceptions/Handler.php",
         "line": 107,
         "trace": [
             {
-                "file": "/var/www/lumen-api-starter/app/Exceptions/Handler.php",
+                "file": "/var/www/laravel-api-starter/app/Exceptions/Handler.php",
                 "line": 55,
                 "function": "render",
-                "class": "Laravel\\Lumen\\Exceptions\\Handler",
+                "class": "Laravel\\Laravel\\Exceptions\\Handler",
                 "type": "->"
             },
             {
-                "file": "/var/www/lumen-api-starter/vendor/laravel/lumen-framework/src/Routing/Pipeline.php",
+                "file": "/var/www/laravel-api-starter/vendor/laravel/laravel-framework/src/Routing/Pipeline.php",
                 "line": 72,
                 "function": "render",
                 "class": "App\\Exceptions\\Handler",
                 "type": "->"
             },
             {
-                "file": "/var/www/lumen-api-starter/vendor/laravel/lumen-framework/src/Routing/Pipeline.php",
+                "file": "/var/www/laravel-api-starter/vendor/laravel/laravel-framework/src/Routing/Pipeline.php",
                 "line": 50,
                 "function": "handleException",
-                "class": "Laravel\\Lumen\\Routing\\Pipeline",
+                "class": "Laravel\\Laravel\\Routing\\Pipeline",
                 "type": "->"
             }
             // ...
@@ -277,11 +277,11 @@ $this->response->errorMethodNotAllowed();
     "data": {
         "message": "syntax error, unexpected '$user' (T_VARIABLE)",
         "exception": "ParseError",
-        "file": "/var/www/lumen-api-starter/app/Http/Controllers/UsersController.php",
+        "file": "/var/www/laravel-api-starter/app/Http/Controllers/UsersController.php",
         "line": 34,
         "trace": [
             {
-                "file": "/var/www/lumen-api-starter/vendor/composer/ClassLoader.php",
+                "file": "/var/www/laravel-api-starter/vendor/composer/ClassLoader.php",
                 "line": 322,
                 "function": "Composer\\Autoload\\includeFile"
             },
@@ -426,7 +426,7 @@ Repository => state、mutation、getter，具体的数据维护
 
 **Constants**:
 
-这个是 lumen-api-starter 新增的部分，用来定义应用系统中常量的数据。
+这个是 laravel-api-starter 新增的部分，用来定义应用系统中常量的数据。
 
 **Criteria**：[l5-repository criteria](https://github.com/andersao/l5-repository#example-the-criteria) 
 
@@ -508,7 +508,7 @@ return $this->item($user, new UserTransformer, ['key' => 'user']);
 在 Controller 中调用 Resource 或者 ResourceCollection 转换数据
 
 ```php
- //return $this->response->success(new UserResource($user));// 使用 lumen-api-starter 统一 code\status\message\data
+ //return $this->response->success(new UserResource($user));// 使用 laravel-api-starter 统一 code\status\message\data
 return new UserResource($user);// 未统一响应结构
 ```
 
