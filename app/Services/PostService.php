@@ -7,6 +7,7 @@ namespace App\Services;
 use App\Contracts\Repositories\PostRepository;
 use App\Contracts\Services\IPostService;
 use Illuminate\Http\Request;
+use Ramsey\Uuid\Type\Integer;
 
 class PostService implements IPostService
 {
@@ -38,6 +39,6 @@ class PostService implements IPostService
 
     public function search(Request $request)
     {
-        return $this->postRepository->filter($request->all())->get();
+        return $this->postRepository->filter($request->all())->paginate(15);
     }
 }
