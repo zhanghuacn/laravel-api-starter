@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Contracts\Services\IPostService;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\PostRequest;
+use App\Http\Resources\PostCollection;
+use App\Http\Resources\PostResource;
 use App\Repositories\Models\Post;
 use Illuminate\Http\Request;
 
@@ -28,13 +30,12 @@ class PostsController extends Controller
 
     public function index(PostRequest $request)
     {
-        return $this->response->success($request->all());
+        return $this->response->success(new PostCollection($this->postService->search($request)));
     }
 
     public function show($id)
     {
-        $post = $this->postService->show($id);
-        return $this->response->success($post);
+        return $this->response->success(new PostResource($this->postService->show($id)));
     }
 
     public function store(PostRequest $request)

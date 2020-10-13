@@ -7,7 +7,7 @@ use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
 /**
- * Class Post.
+ * Class PostResource.
  *
  * @package namespace App\Models;
  */
