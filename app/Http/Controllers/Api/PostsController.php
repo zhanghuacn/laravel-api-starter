@@ -40,6 +40,7 @@ class PostsController extends Controller
 
     public function store(PostRequest $request)
     {
-        return $this->response->success($request);
+
+        return $this->response->success($this->postService->add($request));
     }
 }

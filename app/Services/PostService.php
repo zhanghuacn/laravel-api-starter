@@ -38,6 +38,6 @@ class PostService implements IPostService
 
     public function search(Request $request)
     {
-        return $this->postRepository->all();
+        return $this->postRepository->filter($request->all())->get();
     }
 }

@@ -18,7 +18,11 @@ class PostValidator extends LaravelValidator
      * @var array
      */
     protected $rules = [
-        ValidatorInterface::RULE_CREATE => [],
-        ValidatorInterface::RULE_UPDATE => [],
+        ValidatorInterface::RULE_CREATE => [
+            'title' => 'required|string|max:1',
+        ],
+        ValidatorInterface::RULE_UPDATE => [
+            'title' => 'required|string|max:1',
+        ],
     ];
 }

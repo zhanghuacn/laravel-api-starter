@@ -17,6 +17,7 @@
         "laravel/tinker": "^2.0",
         "prettus/l5-repository": "^2.7",
         "spatie/laravel-permission": "^3.17",
+        "tucker-eric/eloquentfilter": "^2.4",
         "tymon/jwt-auth": "^1.0"
     },
     "require-dev": {

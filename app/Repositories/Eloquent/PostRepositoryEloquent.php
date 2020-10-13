@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Eloquent;
 
+use App\Repositories\Criteria\FilterCriteria;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Contracts\Repositories\PostRepository;
@@ -26,10 +27,10 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
     }
 
     /**
-    * Specify Validator class name
-    *
-    * @return mixed
-    */
+     * Specify Validator class name
+     *
+     * @return mixed
+     */
     public function validator()
     {
 
@@ -43,6 +44,20 @@ class PostRepositoryEloquent extends BaseRepository implements PostRepository
     public function boot()
     {
         $this->pushCriteria(app(RequestCriteria::class));
+    }
+
+    /**
+     * 自动设置过滤
+     *
+     * @param array $map
+     * @return PostRepositoryEloquent
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
+     */
+    public function filter(array $map)
+    {
+        $this->popCriteria(FilterCriteria::class);
+
+        return $this->pushCriteria(new FilterCriteria($map));
     }
 
 }
