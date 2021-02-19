@@ -10,7 +10,7 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-  phpVersion: 7.2
+  phpVersion: 7.4
 
 steps:
 - script: |
@@ -24,3 +24,18 @@ steps:
 
 - script: composer install --no-interaction --prefer-dist
   displayName: 'composer install'
+  
+- script: php artisan config:cache
+  displayName: 'php artisan config:cache'
+  
+- script: php artisan route:cache
+  displayName: 'php artisan route:cache'
+
+- script: php artisan config:cache
+  displayName: 'php artisan config:cache'
+  
+- script: php artisan optimize --force
+  displayName: 'php artisan optimize --force'
+
+- script: composer dumpautoload -o
+  displayName: 'composer dumpautoload -o'
